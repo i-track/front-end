@@ -7,6 +7,10 @@ import About from './Components/About/About'
 
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [departments, setDepartments] = useState([]);
+
+
+
 
 const updateData = (isTrue) => {
   setIsSubmitted(isTrue)
@@ -17,10 +21,12 @@ const resetIsSubmitted = ()=> {
 }
 
 const handleGet = () => {
-  axios.get("https://jsonplaceholder.typicode.com/posts", {
+  axios.get("https://jsonplaceholder.typicode.com/posts?_limit=10", {
     timeout: 5000
   })
-  .then(res => console.log(res.data))
+  .then(res => {
+    setDepartments(res.data)
+  })
   .catch(err => console.log(err))
 }
 
@@ -33,6 +39,11 @@ const handlePost = () => [
   .catch(err => console.log(err))
 ]
 
+const departmentList = departments.map((department) => (
+  <li key={department.id}>
+    {department.title}
+  </li>
+))
 
 
 
@@ -43,8 +54,11 @@ const handlePost = () => [
           <Route path="/" />
           <Route path="/About" element={<About/>} />
         </Routes> */}
+
+        {departmentList}
     <button onClick={handleGet}>View Departments</button>
     <button onClick={handlePost}>Post</button>
+    <button></button>
     </div>
   );
 }
