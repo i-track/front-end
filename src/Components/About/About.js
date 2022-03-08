@@ -1,5 +1,6 @@
 import React from "react";
 import * as IoIcons from "react-icons/io";
+import "./About.css"
 
 const About = () => {
   return (
@@ -13,29 +14,29 @@ const About = () => {
           that they can better understand the structure of their business.
         </p>
       </div>
+      <h1 className="contributor-title">Contributors</h1>
       <div className="developers-container">
-        <h1>Contributors:</h1>
-        <div className="anthony-container">
+        <div className="developer-container">
           <h2>Anthony Kowalkowski</h2>
-          <a href="https://github.com/adkowalkowski">
+          <a className="icon" href="https://github.com/adkowalkowski">
             <IoIcons.IoLogoGithub />
           </a>
         </div>
-        <div className="jerry-container">
+        <div className="developer-container">
           <h2>Jerry Sea</h2>
-          <a href="https://github.com/seajerry">
+          <a className="icon" href="https://github.com/seajerry">
             <IoIcons.IoLogoGithub />
           </a>
         </div>
-        <div className="isaac-container">
+        <div className="developer-container">
           <h2>Isaac Ruiz</h2>
-          <a href="https://github.com/isaacruiz0">
+          <a className="icon" href="https://github.com/isaacruiz0">
             <IoIcons.IoLogoGithub />
           </a>
         </div>
-        <div className="kc-container">
+        <div className="developer-container">
           <h2>KC. Anyalebechi</h2>
-          <a href="https://github.com/sabbathcoder">
+          <a className="icon" href="https://github.com/sabbathcoder">
             <IoIcons.IoLogoGithub />
           </a>
         </div>
