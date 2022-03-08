@@ -16,17 +16,35 @@ const resetIsSubmitted = ()=> {
   setIsSubmitted(false)
 }
 
+const handleGet = () => {
+  axios.get("https://jsonplaceholder.typicode.com/posts", {
+    timeout: 5000
+  })
+  .then(res => console.log(res.data))
+  .catch(err => console.log(err))
+}
+
+const handlePost = () => [
+  axios.post("https://jsonplaceholder.typicode.com/posts", {
+    userID: 1000,
+    title: "GROUP PROJECT"
+  })
+  .then(res => console.log(res.data))
+  .catch(err => console.log(err))
+]
+
 
 
 
   return (
     <div className="App">
-      <NavBar removeData={resetIsSubmitted} />
+      {/* <NavBar removeData={resetIsSubmitted} />
         <Routes>
           <Route path="/" />
           <Route path="/About" element={<About/>} />
-        </Routes>
-
+        </Routes> */}
+    <button onClick={handleGet}>View Departments</button>
+    <button onClick={handlePost}>Post</button>
     </div>
   );
 }
