@@ -1,5 +1,5 @@
 .about-me-container {
-    margin-top: 100px;
+    margin-top: 90px;
     display: flex; 
     justify-content: center;
     align-items: center;
@@ -43,7 +43,7 @@
 }
 
 .contributor-title {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Lora', serif;
 }
 
 

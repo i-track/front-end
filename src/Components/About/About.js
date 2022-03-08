@@ -7,7 +7,7 @@ const About = () => {
     <div className="about-me-container">
       <h1>About us</h1>
       <div className="goal-container">
-        <h2>Our Goal:</h2>
+        <h2>Our Goal</h2>
         <p>
           Our users' typically have the responsibility of managing large groups
           of people. They can create departments and add or delete members so
