@@ -17,25 +17,25 @@ const About = () => {
         <h1>Contributors:</h1>
         <div className="anthony-container">
           <h2>Anthony Kowalkowski</h2>
-          <a>
+          <a href="https://github.com/adkowalkowski">
             <IoIcons.IoLogoGithub />
           </a>
         </div>
         <div className="jerry-container">
           <h2>Jerry Sea</h2>
-          <a>
+          <a href="https://github.com/seajerry">
             <IoIcons.IoLogoGithub />
           </a>
         </div>
         <div className="isaac-container">
           <h2>Isaac Ruiz</h2>
-          <a>
+          <a href="https://github.com/isaacruiz0">
             <IoIcons.IoLogoGithub />
           </a>
         </div>
         <div className="kc-container">
           <h2>KC. Anyalebechi</h2>
-          <a>
+          <a href="https://github.com/sabbathcoder">
             <IoIcons.IoLogoGithub />
           </a>
         </div>
