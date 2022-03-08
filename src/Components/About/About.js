@@ -1,4 +1,5 @@
 import React from "react";
+import * as IoIcons from "react-icons/io";
 
 const About = () => {
   return (
@@ -14,10 +15,30 @@ const About = () => {
       </div>
       <div className="developers-container">
         <h1>Contributors:</h1>
-        <h2>Anthony Kowalkowski</h2>
-        <h2>Jerry Sea</h2>
-        <h2>Isaac Ruiz</h2>
-        <h2>KC. Anyalebechi</h2>
+        <div className="anthony-container">
+          <h2>Anthony Kowalkowski</h2>
+          <a>
+            <IoIcons.IoLogoGithub />
+          </a>
+        </div>
+        <div className="jerry-container">
+          <h2>Jerry Sea</h2>
+          <a>
+            <IoIcons.IoLogoGithub />
+          </a>
+        </div>
+        <div className="isaac-container">
+          <h2>Isaac Ruiz</h2>
+          <a>
+            <IoIcons.IoLogoGithub />
+          </a>
+        </div>
+        <div className="kc-container">
+          <h2>KC. Anyalebechi</h2>
+          <a>
+            <IoIcons.IoLogoGithub />
+          </a>
+        </div>
       </div>
     </div>
   );
