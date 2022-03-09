@@ -1,6 +1,7 @@
 
+
 .navbar {
-    background-color: #000;
+    background-color: #222831;
     height: 80px;
     width: 100%;
     display: flex;
@@ -12,6 +13,13 @@
     z-index: 1;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+
 .menu-bars {
     margin-left: 2rem;
     font-size: 25px;
@@ -20,7 +28,7 @@
 }
 
 .nav-menu {
-    background-color: #000;
+    background-color: #222831;
     height: 100vh;
     width: 100%;
     display: flex;
@@ -45,8 +53,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 25px;
+    margin-bottom: 10px;
     list-style: none;
+    text-align: center;
 }
 
 .nav-text a {
@@ -55,13 +65,15 @@
     font-size: 18px;
     height: 100%;
     display: flex;
-    flex-direction: start;
+    /* flex-direction: start; */
     align-items: center;
+    text-align: center;
+    /* width: 100px; */
     border-radius: 5px;
 }
 
 .nav-text a:hover {
-    background-color: #247291;
+    background-color: #d6e6f2;
 }
 
 .nav-toggle {
@@ -73,15 +85,23 @@
     align-items: center;
 }
 
-span {
-    margin-left: 10px;
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo {
-    color: #ffff;
-    font-size: 25px;
+    text-align: center;
+    color: #4e709d;
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
     padding-right: 15px;
     letter-spacing: 2px;
 }
 
+.eye-icon {
+    color: #d6e6f2;
+}
 

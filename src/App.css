@@ -1,6 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,900;1,100;1,200;1,300;1,400;1,500;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
 
 * {
-    font-family: 'Lora', serif;
+    font-family: 'DM Serif Display', serif;
+}
+body {
+    background-color: #f2f2f2;
+}
+
+.department-search-model {
+    margin-top: 90px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #242424;
+}
+
+.departments-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.department-buttons-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.departments-content {
+    list-style: none;
+    background-color: #d6e6f2;
+    border-radius: 5px;
+    width: 300px;
+    height: 100px;
+}
+
+.delete-btn {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #4e709d;
+    color: #d6e6f2 ;
+    transition: 1s;
+    margin-bottom: 20px;
+}
+
+.editData-btn {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #4e709d;
+    color: #d6e6f2 ;
+    transition: 1s;
+    margin: 20px 0 ;
 }

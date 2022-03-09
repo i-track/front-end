@@ -1,0 +1,49 @@
+
+
+.departments-container {
+    margin-top: 50px;
+}
+
+.get-btn {
+    font-size: 50px;
+    background-color: #f2f2f2;
+    color: #4e709d;
+    border: none;
+    cursor: pointer;
+}
+
+.get-icon svg {
+  color: #4e709d;
+}
+
+.add-members {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px;
+    width: 350px;
+}
+
+.add-input {
+    margin:10px ;
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    text-align: center;
+}
+
+.add-btn {
+    margin: 10px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #4e709d;
+    color: #d6e6f2 ;
+    transition: 1s;
+}
+
+.add-btn:hover {
+    background-color: #f2f2f2;
+    color: #4e709d;
+}

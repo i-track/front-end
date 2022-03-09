@@ -1,15 +1,31 @@
-import axios from "axios";
 import "./App.css";
+import axios from "axios";
 import { Route, Link, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NavBar from "./Components/NavBar/NavBar";
 import About from "./Components/About/About";
+import AddForm from "./Components/AddForm/AddForm";
+import * as GrIcons from "react-icons/gr";
+
+
+
+
+
+
+
+
 
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [departments, setDepartments] = useState([]);
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const [newTitle, setNewTitle] = useState("");
+  const [newDepartment, setNewDepartment] = useState({
+    title: "",
+    body: "",
+  });
+  const [fetchAgain, setFetchAgain] = useState(0);
+
+  // N A V  F U N C T I O N S
 
   const updateData = (isTrue) => {
     setIsSubmitted(isTrue);
@@ -19,9 +35,47 @@ function App() {
     setIsSubmitted(false);
   };
 
+  // H A N D L E R S  F O R  P O S T
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setNewDepartment({
+      ...newDepartment,
+      [e.target.name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFetchAgain(fetchAgain + 1);
+    const departmentData = {
+      title: newDepartment.title,
+      body: newDepartment.body,
+    };
+    axios
+      .post("https://jsonplaceholder.typicode.com/posts", departmentData)
+      .then((response) => {
+        console.log(response.data);
+        setNewDepartment(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   // G E T
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   axios
+  //     .get("https://jsonplaceholder.typicode.com/posts")
+  //     .then((res) => {
+  //       setDepartments(res.data);
+  //       console.log(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [fetchAgain]);
+
+  const handleGet = () => {
     axios
       .get("https://jsonplaceholder.typicode.com/posts")
       .then((res) => {
@@ -29,17 +83,7 @@ function App() {
         console.log(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
-
-  // P O S T
-
-  const postData = (e) => {
-    e.preventDefault()
-    axios.post('https://jsonplaceholder.typicode.com/posts', {
-      title,
-      body
-    }).then(res => console.log('Posting data', res)).catch(err => console.log(err))
-  }
+  };
 
   //  D E L E T E
 
@@ -51,52 +95,84 @@ function App() {
       );
   };
 
+  // U P D A T E
+
+  const editData = (id) => {
+    axios
+      .put(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+        title: newTitle,
+        id: id,
+      })
+      .then((res) => alert("update"));
+  };
+
   // R E N D E R I N G  D A T A
 
   const departmentList = departments.map((department) => (
     <div className="departments-container">
-      <table>
-        <tr>
-          <td style={{border: '1px solid black'}}>{department.id}</td>
-          <td style={{border: '1px solid black'}}>{department.title}</td>
-          <td style={{border: '1px solid black'}}>{department.body}</td>
-        </tr>
-      </table>
-      <button onClick={() => handleDelete(department.id)}>Delete</button>
+      <ul className="departments-content">
+        <li>{department.id}</li>
+        <li>{department.id}</li>
+        <li>{department.id}</li>
+        <li>{department.id}</li>
+      </ul>
+      <div className="department-buttons-inputs">
+        <button className="delete-btn" onClick={() => handleDelete(department.id)}>Delete</button>
+        <input
+            type="Department"
+            name="Department"
+            placeholder="Department"
+            className="add-input"
+            // value={newDepartment.title}
+            onChange={handleChange}
+          />
+          <input
+            type="firstName"
+            name="firstName"
+            placeholder="First Name"
+            className="add-input"
+            // value={newDepartment.body}
+            onChange={handleChange}
+          />
+          <input
+            type="lastName"
+            name="lastName"
+            placeholder="Last Name"
+            className="add-input"
+            // value={newDepartment.body}
+            onChange={handleChange}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            className="add-input"
+            // value={newDepartment.body}
+            onChange={handleChange}
+          />
+        <button className="editData-btn" onClick={() => editData(department.id)}>Edit</button>
+      </div>
     </div>
   ));
 
   return (
-    <div className="App">
-      {/* <NavBar removeData={resetIsSubmitted} />
-        <Routes>
-          <Route path="/" />
-          <Route path="/About" element={<About/>} />
-        </Routes> */}
-
-      <form>
-        <label>Sign Up</label>
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-        <input type="text" value={body} onChange={(e) => setBody(e.target.value)} />
-        <hr/>
-        <button onClick={postData}>Post</button>
-      </form>
-
-
+    <>
+      <NavBar removeData={resetIsSubmitted} />
+      <Routes>
+        <Route path="/" />
+        <Route path="/About" element={<About />} />
+      </Routes>
+      <section className="department-search-model">
+        <h2>View Members</h2>
+        <button className="get-btn" onClick={handleGet}>
+          <GrIcons.GrOverview className="get-icon"/>
+        </button>
+        <AddForm handleChange={handleChange} handleSubmit={handleSubmit}/>
+      </section>
 
       {departmentList}
-    </div>
+    </>
   );
 }
 
 export default App;
-
-// const handlePost = () => {
-//   axios
-//     .post("https://jsonplaceholder.typicode.com/posts", {
-//       userID: 1000,
-//       title: "GROUP PROJECT",
-//     })
-//     .then((res) => console.log(res.data));
-//   // .catch((err) => console.log(err));
-// };
