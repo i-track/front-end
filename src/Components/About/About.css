@@ -46,4 +46,8 @@
     font-family: 'Lora', serif;
 }
 
+#about .department-search-model {
+    display: none; 
+}
+
 

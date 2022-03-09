@@ -6,14 +6,7 @@ import NavBar from "./Components/NavBar/NavBar";
 import About from "./Components/About/About";
 import AddForm from "./Components/AddForm/AddForm";
 import * as GrIcons from "react-icons/gr";
-
-
-
-
-
-
-
-
+import Main from "./Components/Main/Main";
 
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -159,18 +152,13 @@ function App() {
     <>
       <NavBar removeData={resetIsSubmitted} />
       <Routes>
-        <Route path="/" />
+        <Route path="/" element={<Main handleGet={handleGet} handleChange={handleChange} handleSubmit={handleSubmit} departmentList={departmentList} />}/>
         <Route path="/About" element={<About />} />
       </Routes>
-      <section className="department-search-model">
-        <h2>View Members</h2>
-        <button className="get-btn" onClick={handleGet}>
-          <GrIcons.GrOverview className="get-icon"/>
-        </button>
-        <AddForm handleChange={handleChange} handleSubmit={handleSubmit}/>
-      </section>
+     
+      
 
-      {departmentList}
+      
     </>
   );
 }

@@ -4,12 +4,13 @@ import "./About.css"
 
 const About = () => {
   return (
-    <div className="about-me-container">
+    <body id="about">
+<div className="about-me-container">
       <h1>About us</h1>
       <div className="goal-container">
         <h2>Our Goal</h2>
         <p>
-          Our users' typically have the responsibility of managing large groups
+          Our users typically have the responsibility of managing large groups
           of people. They can create departments and add or delete members so
           that they can better understand the structure of their business.
         </p>
@@ -42,6 +43,8 @@ const About = () => {
         </div>
       </div>
     </div>
+    </body>
+    
   );
 };
 
