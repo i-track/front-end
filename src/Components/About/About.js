@@ -11,7 +11,7 @@ const About = () => {
         <h1>Our Goal</h1>
         <p>
           Our users typically have the responsibility of managing large groups
-          of people. They can create departments and add or delete members so
+          of people. They can create departments and add, delete, or edit team members so
           that they can better understand the structure of their business.
         </p>
       </div>
