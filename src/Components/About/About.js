@@ -4,7 +4,8 @@ import "./About.css"
 
 const About = () => {
   return (
-    <div className="about-me-container">
+    <body id="about">
+<div className="about-me-container">
       <h1>About us</h1>
       <div className="goal-container">
         <h2>Our Goal</h2>
@@ -42,6 +43,8 @@ const About = () => {
         </div>
       </div>
     </div>
+    </body>
+    
   );
 };
 
