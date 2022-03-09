@@ -6,6 +6,7 @@ import * as AiIcons from "react-icons/ai";
 import * as ImIcons from "react-icons/im";
 import { useState } from "react";
 
+
 const NavBar = ({ removeData }) => {
   const [sidebar, setSidebar] = useState(false);
 
@@ -22,7 +23,11 @@ const NavBar = ({ removeData }) => {
           <FaIcons.FaBars onClick={showSidebar} />
         </Link>
         <div className="logo-container">
-          <h2 className="logo"><ImIcons.ImEyePlus className="eye-icon"/> Track</h2>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <h2 className="logo">
+              <ImIcons.ImEyePlus className="eye-icon" /> Track
+            </h2>
+          </Link>
         </div>
       </div>
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
@@ -48,5 +53,3 @@ const NavBar = ({ removeData }) => {
 };
 
 export default NavBar;
-
-
