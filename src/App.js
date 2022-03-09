@@ -8,11 +8,16 @@ import About from "./Components/About/About";
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [departments, setDepartments] = useState([]);
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  // const [title, setTitle] = useState('');
+  // const [body, setBody] = useState('');
   const [newTitle, setNewTitle] = useState('');
+  const [newDepartment, setNewDepartment] = useState({
+    title:"",
+    body:""
+  })
 
 
+  // N A V  F U N C T I O N S
 
   const updateData = (isTrue) => {
     setIsSubmitted(isTrue);
@@ -21,6 +26,29 @@ function App() {
   const resetIsSubmitted = () => {
     setIsSubmitted(false);
   };
+
+  // H A N D L E R S  F O R  P O S T 
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setNewDepartment({
+      ...newDepartment,
+      [e.target.name]: value
+    })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const departmentData = {
+      title: newDepartment.title,
+      body: newDepartment.body
+    };
+    axios.post('https://jsonplaceholder.typicode.com/posts', departmentData).then((response) => {
+      console.log(response.data)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
 
   // G E T
 
@@ -36,13 +64,13 @@ function App() {
 
   // P O S T
 
-  const postData = (e) => {
-    e.preventDefault()
-    axios.post('https://jsonplaceholder.typicode.com/posts', {
-      title,
-      body
-    }).then(res => console.log('Posting data', res)).catch(err => console.log(err))
-  }
+  // const postData = (e) => {
+  //   e.preventDefault()
+  //   axios.post('https://jsonplaceholder.typicode.com/posts', {
+  //     title,
+  //     body
+  //   }).then(res => console.log('Posting data', res)).catch(err => console.log(err))
+  // }
 
   //  D E L E T E
 
@@ -67,41 +95,41 @@ function App() {
 
   const departmentList = departments.map((department) => (
     <div className="departments-container">
-      <table>
-        <tr>
-          <td style={{border: '1px solid black'}}>{department.id}</td>
-          <td style={{border: '1px solid black'}}>{department.title}</td>
-          <td style={{border: '1px solid black'}}>{department.body}</td>
-        </tr>
-      </table>
+      <ul>
+          <li >{department.id}</li>
+          <li >{department.title}</li>
+          <li >{department.body}</li>
+      </ul>
+      <div className="department-buttons-inputs">
       <button onClick={() => handleDelete(department.id)}>Delete</button>
       <input onChange={(e) => setNewTitle(e.target.value)} type="text" placeholder="update me"/>
       <button onClick={() => editData(department.id)}>Edit</button>
+      </div>
     </div>
   ));
 
   return (
-    <div className="App">
-      {/* <NavBar removeData={resetIsSubmitted} />
+    <>
+      <NavBar removeData={resetIsSubmitted} />
         <Routes>
           <Route path="/" />
           <Route path="/About" element={<About/>} />
-        </Routes> */}
+        </Routes>
+        <section className="department-model">
+          {departmentList}
+        </section>
+      
 
-      <form >
-        <label>Sign Up</label>
-        <input type="text" value={body} onChange={(e) => setBody(e.target.value)}   />
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}  />
-        <hr/>
-        <button onClick={postData}>Post</button>
+      <div className="add-member">
+      <form onSubmit={handleSubmit}>
+        <label>Add Member</label>
+        <input type="title" name="title" placeholder="title"value={newDepartment.title}  onChange={handleChange}/>
+        <input type="body"  name="body" placeholder="body"value={newDepartment.body} onChange={handleChange}  />
+        <button type="submit">Add</button>
       </form>
+      </div>
 
-
-
-
-
-      {departmentList}
-    </div>
+    </>
   );
 }
 

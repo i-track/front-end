@@ -4,3 +4,12 @@
 * {
     font-family: 'Lora', serif;
 }
+
+.department-model {
+    margin-top: 90px;
+    padding: 10px;
+}
+
+.departments-container {
+    margin-top: 50px;
+}

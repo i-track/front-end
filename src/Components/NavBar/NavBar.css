@@ -12,6 +12,13 @@
     z-index: 1;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+
 .menu-bars {
     margin-left: 2rem;
     font-size: 25px;
@@ -45,7 +52,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 25px;
+    margin-bottom: 10px;
     list-style: none;
 }
 
