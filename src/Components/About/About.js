@@ -6,7 +6,6 @@ const About = () => {
   return (
     <body id="about">
 <div className="about-me-container">
-      <h1>About us</h1>
       <div className="goal-container">
         <h1>Our Goal</h1>
         <p>
