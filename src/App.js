@@ -10,6 +10,9 @@ function App() {
   const [departments, setDepartments] = useState([]);
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+  const [newTitle, setNewTitle] = useState('');
+
+
 
   const updateData = (isTrue) => {
     setIsSubmitted(isTrue);
@@ -23,7 +26,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get("https://jsonplaceholder.typicode.com/posts?_limit=5")
       .then((res) => {
         setDepartments(res.data);
         console.log(res.data);
@@ -51,6 +54,15 @@ function App() {
       );
   };
 
+  // U P D A T E 
+
+  const editData = (id) => {
+    axios.put(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+      title: newTitle,
+      id: id
+    }).then(res => alert("update"))
+  }
+
   // R E N D E R I N G  D A T A
 
   const departmentList = departments.map((department) => (
@@ -63,6 +75,8 @@ function App() {
         </tr>
       </table>
       <button onClick={() => handleDelete(department.id)}>Delete</button>
+      <input onChange={(e) => setNewTitle(e.target.value)} type="text" placeholder="update me"/>
+      <button onClick={() => editData(department.id)}>Edit</button>
     </div>
   ));
 
@@ -74,13 +88,15 @@ function App() {
           <Route path="/About" element={<About/>} />
         </Routes> */}
 
-      <form>
+      <form >
         <label>Sign Up</label>
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-        <input type="text" value={body} onChange={(e) => setBody(e.target.value)} />
+        <input type="text" value={body} onChange={(e) => setBody(e.target.value)}   />
+        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}  />
         <hr/>
         <button onClick={postData}>Post</button>
       </form>
+
+
 
 
 
@@ -91,12 +107,41 @@ function App() {
 
 export default App;
 
-// const handlePost = () => {
-//   axios
-//     .post("https://jsonplaceholder.typicode.com/posts", {
-//       userID: 1000,
-//       title: "GROUP PROJECT",
-//     })
-//     .then((res) => console.log(res.data));
-//   // .catch((err) => console.log(err));
-// };
+
+
+
+// //   const [addFormData, setAddFormData] =useState({
+//   title: '',
+//   body: ''
+// })
+
+
+
+
+// const handleAddFormChange = (event) => {
+//   event.preventDefault();
+
+//   const formTitle = event.target.getAttribute('name');
+//   const formValue = event.target.value;
+
+//   const newFormData = { ...addFormData}
+//   newFormData[formTitle] = formValue;
+
+//   setAddFormData(newFormData)
+// }
+
+// const handleAddFormSubmit = (event) => {
+
+//   const newDepartment = {
+//     title: addFormData.title,
+//     body: addFormData.body
+//   }
+
+//   const newDepartments = [...departments, newDepartment]
+//   setDepartments(newDepartments)
+// }
+
+
+// name="title" placeholder="title" onChange={handleAddFormChange}
+
+// name="body" placeholder="title" onChange={handleAddFormChange} 
