@@ -1,0 +1,29 @@
+.footer-container {
+    height: 80px;
+    width: 100%;
+    margin: 0;
+    background-color: #222831;
+    position: fixed;
+    bottom: 0;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    font-size: 18px;
+    color: #4e709d;
+    padding-top: 25px;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.social-icons:hover {
+    transform: scale(1.5) translateY(-8px);
+    cursor: pointer;
+}
+
+.social-icons a {
+    color: #4e709d;
+}
