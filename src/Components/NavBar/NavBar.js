@@ -3,6 +3,7 @@ import { SideBarData } from "./SideBarData";
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
+import * as ImIcons from "react-icons/im";
 import { useState } from "react";
 
 const NavBar = ({ removeData }) => {
@@ -20,7 +21,9 @@ const NavBar = ({ removeData }) => {
         <Link to="#" className="menu-bars">
           <FaIcons.FaBars onClick={showSidebar} />
         </Link>
-        <h2 className="logo">LOGO</h2>
+        <div className="logo-container">
+          <h2 className="logo"><ImIcons.ImEyePlus className="eye-icon"/> Track</h2>
+        </div>
       </div>
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
         <ul className="nav-menu-items" onClick={showSidebar}>
@@ -33,7 +36,6 @@ const NavBar = ({ removeData }) => {
             return (
               <li key={index} className={item.className}>
                 <Link to={item.path} onClick={handleQueryRemoval}>
-                  {item.icon}
                   <span>{item.title}</span>
                 </Link>
               </li>
@@ -46,3 +48,5 @@ const NavBar = ({ removeData }) => {
 };
 
 export default NavBar;
+
+
