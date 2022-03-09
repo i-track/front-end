@@ -1,12 +1,11 @@
 import "./NavBar.css";
 import { SideBarData } from "./SideBarData";
-import { Route, Link, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as ImIcons from "react-icons/im";
 import { useState } from "react";
-import Main from "../Main/Main";
-import App from "../../App";
+
 
 const NavBar = ({ removeData }) => {
   const [sidebar, setSidebar] = useState(false);
