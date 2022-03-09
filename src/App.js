@@ -1,10 +1,12 @@
-import axios from "axios";
 import "./App.css";
+import axios from "axios";
 import { Route, Link, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NavBar from "./Components/NavBar/NavBar";
 import About from "./Components/About/About";
+import AddForm from "./Components/AddForm/AddForm";
 import * as GrIcons from "react-icons/gr";
+
 
 
 
@@ -108,40 +110,15 @@ function App() {
 
   const departmentList = departments.map((department) => (
     <div className="departments-container">
-      <ul>
+      <ul className="departments-content">
         <li>{department.id}</li>
-        <li>{department.title}</li>
-        <li>{department.body}</li>
+        <li>{department.id}</li>
+        <li>{department.id}</li>
+        <li>{department.id}</li>
       </ul>
       <div className="department-buttons-inputs">
-        <button onClick={() => handleDelete(department.id)}>Delete</button>
+        <button className="delete-btn" onClick={() => handleDelete(department.id)}>Delete</button>
         <input
-          onChange={(e) => setNewTitle(e.target.value)}
-          type="text"
-          placeholder="update me"
-        />
-        <button onClick={() => editData(department.id)}>Edit</button>
-      </div>
-    </div>
-  ));
-
-  return (
-    <>
-      <NavBar removeData={resetIsSubmitted} />
-      <Routes>
-        <Route path="/" />
-        <Route path="/About" element={<About />} />
-      </Routes>
-      <section className="department-model">
-        <h2>View Members</h2>
-        <button className="get-btn" onClick={handleGet}>
-          <GrIcons.GrOverview className="get-icon" />
-        </button>
-      </section>
-      <div className="add-member">
-        <form className="add-members" onSubmit={handleSubmit}>
-          <label>Add Member</label>
-          <input
             type="Department"
             name="Department"
             placeholder="Department"
@@ -173,9 +150,26 @@ function App() {
             // value={newDepartment.body}
             onChange={handleChange}
           />
-          <button className="add-btn" type="submit">Add</button>
-        </form>
+        <button className="editData-btn" onClick={() => editData(department.id)}>Edit</button>
       </div>
+    </div>
+  ));
+
+  return (
+    <>
+      <NavBar removeData={resetIsSubmitted} />
+      <Routes>
+        <Route path="/" />
+        <Route path="/About" element={<About />} />
+      </Routes>
+      <section className="department-search-model">
+        <h2>View Members</h2>
+        <button className="get-btn" onClick={handleGet}>
+          <GrIcons.GrOverview className="get-icon"/>
+        </button>
+        <AddForm handleChange={handleChange} handleSubmit={handleSubmit}/>
+      </section>
+
       {departmentList}
     </>
   );

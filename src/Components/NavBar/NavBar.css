@@ -94,11 +94,14 @@
 
 .logo {
     text-align: center;
-    color: #d6e6f2;
+    color: #4e709d;
     font-family: 'DM Serif Display', serif;
     font-size: 30px;
-
     padding-right: 15px;
     letter-spacing: 2px;
+}
+
+.eye-icon {
+    color: #d6e6f2;
 }
 
