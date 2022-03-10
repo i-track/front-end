@@ -72,10 +72,10 @@ function App() {
 
   const handleGet = () => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get("http://localhost:4000/departments")
       .then((res) => {
-        setDepartments(res.data);
-        console.log(res.data);
+        setDepartments(res.data.departments);
+        console.log(res.data.departments);
       })
       .catch((err) => console.log(err));
   };
@@ -94,7 +94,7 @@ function App() {
 
   const editData = (id) => {
     axios
-      .put(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+      .put(`http://jsonplaceholder.typicode.com/posts/${id}`, {
         title: newTitle,
         id: id,
       })
@@ -105,11 +105,10 @@ function App() {
 
   const departmentList = departments.map((department) => (
     <div className="departments-container">
-      <ul className="departments-content">
-        <li>{department.id}</li>
-        <li>{department.id}</li>
-        <li>{department.id}</li>
-        <li>{department.id}</li>
+      <ul key={department._id} className="departments-content">
+        <li className="members-content">{department.member[0].firstName} {department.member[0].lastName}</li>
+        <li className="members-content">{department.dptName}</li>
+        <li className="members-content">{department.member[0].email}</li>
       </ul>
       <div className="department-buttons-inputs">
         <button className="delete-btn" onClick={() => handleDelete(department.id)}>Delete</button>
