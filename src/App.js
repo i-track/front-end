@@ -84,10 +84,14 @@ function App() {
 
   const handleDelete = (id) => {
     axios
-      .delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .delete(`http://localhost:4000/departments/${id}`)
       .then((res) =>
         console.log("Deleted", res).catch((err) => console.log(err))
       );
+      return axios.get("http://localhost:4000/departments")
+      .then(res => {
+        setDepartments(res.data.departments)
+      })
   };
 
   // U P D A T E
@@ -111,7 +115,7 @@ function App() {
         <li className="members-content">{department.member[0].email}</li>
       </ul>
       <div className="department-buttons-inputs">
-        <button className="delete-btn" onClick={() => handleDelete(department.id)}>Delete</button>
+        <button className="delete-btn" onClick={() => handleDelete(department._id)}>Delete</button>
         <input
             type="Department"
             name="Department"
