@@ -106,9 +106,9 @@ function App() {
   const departmentList = departments.map((department) => (
     <div className="departments-container">
       <ul key={department._id} className="departments-content">
-        <li>{department.member[0].firstName} {department.member[0].lastName}</li>
-        <li>{department.dptName}</li>
-        <li>{department.member[0].email}</li>
+        <li className="members-content">{department.member[0].firstName} {department.member[0].lastName}</li>
+        <li className="members-content">{department.dptName}</li>
+        <li className="members-content">{department.member[0].email}</li>
       </ul>
       <div className="department-buttons-inputs">
         <button className="delete-btn" onClick={() => handleDelete(department.id)}>Delete</button>
