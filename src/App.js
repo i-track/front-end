@@ -6,7 +6,7 @@ import NavBar from "./Components/NavBar/NavBar";
 import About from "./Components/About/About";
 import Main from "./Components/Main/Main";
 import Footer from "./Components/Footer/Footer";
-import AddForm from "./Components/AddForm/AddForm";
+import AddUser from "./Components/AddUser/AddUser";
 import * as GrIcons from "react-icons/gr";
 
 
@@ -15,10 +15,13 @@ function App() {
   const [departments, setDepartments] = useState([]);
   const [newTitle, setNewTitle] = useState("");
   const [newDepartment, setNewDepartment] = useState({
-    title: "",
-    body: "",
-  });
-  const [fetchAgain, setFetchAgain] = useState(0);
+    dptName: "",
+    member: [
+      {
+        firstName: "",
+      }
+    ]
+    });
 
   // N A V  F U N C T I O N S
 
@@ -33,25 +36,34 @@ function App() {
   // H A N D L E R S  F O R  P O S T
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    setNewDepartment({
-      ...newDepartment,
-      [e.target.name]: value,
-    });
+    e.persist()
+    setNewDepartment((prevDepartment) => {
+      const editedDepartment = {
+        ...prevDepartment,
+        [e.target.name]: e.target.value,
+      }
+      return editedDepartment
+    })
+    // const value = e.target.value;
+    // setNewDepartment({
+    //   ...newDepartment,
+    //   [e.target.name]: e.target.value,
+    // });
+    // return value
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFetchAgain(fetchAgain + 1);
     const departmentData = {
-      title: newDepartment.title,
-      body: newDepartment.body,
+      dptName: newDepartment.dptName,
+      member: [newDepartment.member[0].firstName],
     };
     axios
-      .post("https://jsonplaceholder.typicode.com/posts", departmentData)
+      .post("http://localhost:4000/departments", departmentData)
       .then((response) => {
         console.log(response.data);
         setNewDepartment(response.data);
+        console.log(newDepartment);
       })
       .catch((err) => {
         console.log(err);
@@ -157,8 +169,9 @@ function App() {
     <>
       <NavBar removeData={resetIsSubmitted} />
       <Routes>
-        <Route path="/" element={<Main handleGet={handleGet} handleChange={handleChange} handleSubmit={handleSubmit} departmentList={departmentList} />}/>
+        <Route path="/" element={<Main handleGet={handleGet} handleChange={handleChange} handleSubmit={handleSubmit} departmentList={departmentList} newDepartment={newDepartment} />}/>
         <Route path="/About" element={<About />} />
+        <Route path="/AddUser" element={<AddUser handleGet={handleGet} handleChange={handleChange} handleSubmit={handleSubmit} departmentList={departmentList} newDepartment={newDepartment}/>} />
       </Routes>
       <Footer/>
     </>

@@ -10,4 +10,9 @@ export const SideBarData = [
     path: "/About",
     className: "nav-text",
   },
+  {
+    title: "Add Team Member",
+    path: "/AddUser",
+    className: "nav-text",
+  }
 ];
