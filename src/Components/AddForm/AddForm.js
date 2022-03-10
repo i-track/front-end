@@ -1,7 +1,7 @@
 import React from "react";
-import "./AddUser.css"
+import "./AddForm.css"
 
-const AddUser = ({handleChange, handleSubmit, newDepartment}) => {
+const AddForm = ({handleChange, handleSubmit, newDepartment}) => {
 
 
 
@@ -10,20 +10,20 @@ const AddUser = ({handleChange, handleSubmit, newDepartment}) => {
       <div className="add-member">
         <form className="add-members" onSubmit={handleSubmit}>
           <label className="add-member-label">Add Member</label>
-          <input
+          {/* <input
             type="text"
             name="dptName"
             placeholder="Department"
             className="add-input"
             value={newDepartment.dptName}
             onChange={handleChange}
-          />
+          /> */}
           <input
             type="text"
-            name="member"
+            name="firstName"
             placeholder="First Name"
             className="add-input"
-            value={newDepartment.member.firstName}
+            value={newDepartment.firstName}
             onChange={handleChange}
           />
           <input
@@ -31,7 +31,7 @@ const AddUser = ({handleChange, handleSubmit, newDepartment}) => {
             name="lastName"
             placeholder="Last Name"
             className="add-input"
-            // value={newDepartment.member.lastName}
+            value={newDepartment.lastName}
             onChange={handleChange}
           />
           <input
@@ -51,4 +51,4 @@ const AddUser = ({handleChange, handleSubmit, newDepartment}) => {
   );
 };
 
-export default AddUser;
+export default AddForm;

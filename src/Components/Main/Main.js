@@ -2,7 +2,7 @@ import "./Main.css";
 import React from "react";
 import { useState } from "react";
 import App from "../../App";
-import AddForm from "../AddUser/AddUser";
+import AddForm from "../AddForm/AddForm";
 import * as GrIcons from "react-icons/gr";
 
 const Main = ({
@@ -19,6 +19,11 @@ const Main = ({
         <button className="get-btn" onClick={handleGet}>
           <GrIcons.GrOverview className="get-icon" />
         </button>
+        <AddForm
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          newDepartment={newDepartment}
+        />
       </section>
 
       {departmentList}

@@ -6,7 +6,7 @@ import NavBar from "./Components/NavBar/NavBar";
 import About from "./Components/About/About";
 import Main from "./Components/Main/Main";
 import Footer from "./Components/Footer/Footer";
-import AddUser from "./Components/AddUser/AddUser";
+import AddForm from "./Components/AddForm/AddForm";
 import * as GrIcons from "react-icons/gr";
 
 
@@ -15,13 +15,10 @@ function App() {
   const [departments, setDepartments] = useState([]);
   const [newTitle, setNewTitle] = useState("");
   const [newDepartment, setNewDepartment] = useState({
-    dptName: "",
-    member: [
-      {
-        firstName: "",
-      }
-    ]
-    });
+    firstName: "",
+    lastName: "",
+    email: "",
+  })
 
   // N A V  F U N C T I O N S
 
@@ -55,8 +52,9 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const departmentData = {
-      dptName: newDepartment.dptName,
-      member: [newDepartment.member[0].firstName],
+      firstName: newDepartment.firstName,
+      lastName: newDepartment.lastName,
+      email: newDepartment.email,
     };
     axios
       .post("http://localhost:4000/departments", departmentData)
@@ -122,9 +120,9 @@ function App() {
   const departmentList = departments.map((department) => (
     <div className="departments-container">
       <ul key={department._id} className="departments-content">
-        <li className="members-content">{department.member[0].firstName} {department.member[0].lastName}</li>
-        <li className="members-content">{department.dptName}</li>
-        <li className="members-content">{department.member[0].email}</li>
+        <li className="members-content">{department.firstName} {department.lastName}</li>
+        <li className="members-content">{department.email}</li>
+        {/* <li className="members-content">{department.member[0].email}</li> */}
       </ul>
       <div className="department-buttons-inputs">
         <button className="delete-btn" onClick={() => handleDelete(department._id)}>Delete</button>
@@ -171,7 +169,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Main handleGet={handleGet} handleChange={handleChange} handleSubmit={handleSubmit} departmentList={departmentList} newDepartment={newDepartment} />}/>
         <Route path="/About" element={<About />} />
-        <Route path="/AddUser" element={<AddUser handleGet={handleGet} handleChange={handleChange} handleSubmit={handleSubmit} departmentList={departmentList} newDepartment={newDepartment}/>} />
       </Routes>
       <Footer/>
     </>
