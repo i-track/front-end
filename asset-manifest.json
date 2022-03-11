@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/i-track/front-end/tree/development/static/css/main.676de743.css",
+    "main.js": "/i-track/front-end/tree/development/static/js/main.8b647828.js",
+    "index.html": "/i-track/front-end/tree/development/index.html",
+    "main.676de743.css.map": "/i-track/front-end/tree/development/static/css/main.676de743.css.map",
+    "main.8b647828.js.map": "/i-track/front-end/tree/development/static/js/main.8b647828.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.676de743.css",
+    "static/js/main.8b647828.js"
+  ]
+}
