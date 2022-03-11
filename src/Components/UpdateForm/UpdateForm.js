@@ -53,7 +53,8 @@ const UpdateForm = ({ department }) => {
         lastName: newTitle.lastName,
         email: newTitle.email,
       })
-      .then((res) => setNewTitle(res));
+      .then((res) => setNewTitle(res))
+      .then((res) => alert("Updated! Refresh to view changes"));
     //   .then(setRedirect(true))
     //   return axios.get("http://localhost:4000/departments").then((res) => {
     //   setNewTitle(res.data);
