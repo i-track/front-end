@@ -7,18 +7,17 @@ import About from "./Components/About/About";
 import Main from "./Components/Main/Main";
 import Footer from "./Components/Footer/Footer";
 import AddForm from "./Components/AddForm/AddForm";
+import UpdateForm from "./Components/UpdateForm/UpdateForm";
 import * as GrIcons from "react-icons/gr";
-
 
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [departments, setDepartments] = useState([]);
-  const [newTitle, setNewTitle] = useState("");
   const [newDepartment, setNewDepartment] = useState({
-    title: "",
-    body: "",
+    firstName: "",
+    lastName: "",
+    email: "",
   });
-  const [fetchAgain, setFetchAgain] = useState(0);
 
   // N A V  F U N C T I O N S
 
@@ -33,42 +32,46 @@ function App() {
   // H A N D L E R S  F O R  P O S T
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    setNewDepartment({
-      ...newDepartment,
-      [e.target.name]: value,
+    e.preventDefault();
+    e.persist();
+    setNewDepartment((prevDepartment) => {
+      const editedDepartment = {
+        ...prevDepartment,
+        [e.target.name]: e.target.value,
+      };
+      return editedDepartment;
     });
   };
 
+  // const handleUpdate = (e) => {
+  //   const value = e.target.value;
+  //   setNewTitle({
+  //     ...newTitle,
+  //     [e.target.name]: e.target.value,
+  //   });
+  //   return value;
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFetchAgain(fetchAgain + 1);
     const departmentData = {
-      title: newDepartment.title,
-      body: newDepartment.body,
+      firstName: newDepartment.firstName,
+      lastName: newDepartment.lastName,
+      email: newDepartment.email,
     };
     axios
-      .post("https://jsonplaceholder.typicode.com/posts", departmentData)
+      .post("http://localhost:4000/departments", departmentData)
       .then((response) => {
         console.log(response.data);
         setNewDepartment(response.data);
+        console.log(newDepartment);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  // G E T
-
-  // useEffect(() => {
-  //   axios
-  //     .get("https://jsonplaceholder.typicode.com/posts")
-  //     .then((res) => {
-  //       setDepartments(res.data);
-  //       console.log(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [fetchAgain]);
+// GET
 
   const handleGet = () => {
     axios
@@ -84,68 +87,37 @@ function App() {
 
   const handleDelete = (id) => {
     axios
-      .delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .delete(`http://localhost:4000/departments/${id}`)
       .then((res) =>
         console.log("Deleted", res).catch((err) => console.log(err))
       );
+    return axios.get("http://localhost:4000/departments").then((res) => {
+      setDepartments(res.data.departments);
+    });
   };
 
-  // U P D A T E
 
-  const editData = (id) => {
-    axios
-      .put(`http://jsonplaceholder.typicode.com/posts/${id}`, {
-        title: newTitle,
-        id: id,
-      })
-      .then((res) => alert("update"));
-  };
 
   // R E N D E R I N G  D A T A
 
   const departmentList = departments.map((department) => (
     <div className="departments-container">
       <ul key={department._id} className="departments-content">
-        <li className="members-content">{department.member[0].firstName} {department.member[0].lastName}</li>
-        <li className="members-content">{department.dptName}</li>
-        <li className="members-content">{department.member[0].email}</li>
+        <li className="members-content">
+          {department.firstName} {department.lastName}
+        </li>
+        <li className="members-content">{department.email}</li>
+        {/* <li className="members-content">{department.member[0].email}</li> */}
       </ul>
       <div className="department-buttons-inputs">
-        <button className="delete-btn" onClick={() => handleDelete(department.id)}>Delete</button>
-        <input
-            type="Department"
-            name="Department"
-            placeholder="Department"
-            className="add-input"
-            // value={newDepartment.title}
-            onChange={handleChange}
-          />
-          <input
-            type="firstName"
-            name="firstName"
-            placeholder="First Name"
-            className="add-input"
-            // value={newDepartment.body}
-            onChange={handleChange}
-          />
-          <input
-            type="lastName"
-            name="lastName"
-            placeholder="Last Name"
-            className="add-input"
-            // value={newDepartment.body}
-            onChange={handleChange}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            className="add-input"
-            // value={newDepartment.body}
-            onChange={handleChange}
-          />
-        <button className="editData-btn" onClick={() => editData(department.id)}>Edit</button>
+        <button
+          className="delete-btn"
+          onClick={() => handleDelete(department._id)}
+        >
+          Delete
+        </button>
       </div>
+      <UpdateForm handleChange={handleChange} handleSubmit={handleSubmit} department={department}/>
     </div>
   ));
 
@@ -153,10 +125,21 @@ function App() {
     <>
       <NavBar removeData={resetIsSubmitted} />
       <Routes>
-        <Route path="/" element={<Main handleGet={handleGet} handleChange={handleChange} handleSubmit={handleSubmit} departmentList={departmentList} />}/>
+        <Route
+          path="/"
+          element={
+            <Main
+              handleGet={handleGet}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+              departmentList={departmentList}
+              newDepartment={newDepartment}
+            />
+          }
+        />
         <Route path="/About" element={<About />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </>
   );
 }

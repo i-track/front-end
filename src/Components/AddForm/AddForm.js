@@ -1,7 +1,7 @@
 import React from "react";
 import "./AddForm.css"
 
-const AddForm = ({handleChange, handleSubmit}) => {
+const AddForm = ({handleChange, handleSubmit, newDepartment}) => {
 
 
 
@@ -9,21 +9,21 @@ const AddForm = ({handleChange, handleSubmit}) => {
     <div>
       <div className="add-member">
         <form className="add-members" onSubmit={handleSubmit}>
-          <label>Add Member</label>
-          <input
-            type="Department"
-            name="Department"
+          <label className="add-member-label">Add Member</label>
+          {/* <input
+            type="text"
+            name="dptName"
             placeholder="Department"
             className="add-input"
-            // value={newDepartment.title}
+            value={newDepartment.dptName}
             onChange={handleChange}
-          />
+          /> */}
           <input
-            type="firstName"
+            type="text"
             name="firstName"
             placeholder="First Name"
             className="add-input"
-            // value={newDepartment.body}
+            value={newDepartment.firstName}
             onChange={handleChange}
           />
           <input
@@ -31,7 +31,7 @@ const AddForm = ({handleChange, handleSubmit}) => {
             name="lastName"
             placeholder="Last Name"
             className="add-input"
-            // value={newDepartment.body}
+            value={newDepartment.lastName}
             onChange={handleChange}
           />
           <input
@@ -39,7 +39,7 @@ const AddForm = ({handleChange, handleSubmit}) => {
             name="email"
             placeholder="Email"
             className="add-input"
-            // value={newDepartment.body}
+            // value={newDepartment.member.email}
             onChange={handleChange}
           />
           <button className="add-btn" type="submit">

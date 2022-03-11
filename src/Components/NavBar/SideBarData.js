@@ -9,5 +9,5 @@ export const SideBarData = [
     title: "About",
     path: "/About",
     className: "nav-text",
-  },
+  }
 ];
