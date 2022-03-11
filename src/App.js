@@ -43,15 +43,6 @@ function App() {
     });
   };
 
-  // const handleUpdate = (e) => {
-  //   const value = e.target.value;
-  //   setNewTitle({
-  //     ...newTitle,
-  //     [e.target.name]: e.target.value,
-  //   });
-  //   return value;
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const departmentData = {
