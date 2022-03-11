@@ -51,7 +51,7 @@ function App() {
       // email: newDepartment.email,
     };
     axios
-      .post("http://thawing-depths-18911.herokuapp.com/departments", departmentData)
+      .post("https://thawing-depths-18911.herokuapp.com/departments", departmentData)
       .then((response) => {
         console.log(response.data);
         setNewDepartment(response.data);
@@ -66,7 +66,7 @@ function App() {
 
   const handleGet = () => {
     axios
-      .get("http://thawing-depths-18911.herokuapp.com/departments")
+      .get("https://thawing-depths-18911.herokuapp.com/departments")
       .then((res) => {
         setDepartments(res.data.departments);
         console.log(res.data.departments);
@@ -78,11 +78,11 @@ function App() {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://thawing-depths-18911.herokuapp.com/departments/${id}`)
+      .delete(`https://thawing-depths-18911.herokuapp.com/departments/${id}`)
       .then((res) =>
         console.log("Deleted", res).catch((err) => console.log(err))
       );
-    return axios.get("http://thawing-depths-18911.herokuapp.com/departments").then((res) => {
+    return axios.get("https://thawing-depths-18911.herokuapp.com/departments").then((res) => {
       setDepartments(res.data.departments);
     });
   };
