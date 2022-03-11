@@ -33,7 +33,7 @@ const UpdateForm = ({ department }) => {
     //   email: newDepartment.email,
     // };
     axios
-      .get("http://thawing-depths-18911.herokuapp.com/departments")
+      .get("https://thawing-depths-18911.herokuapp.com/departments")
       .then((response) => {
         console.log(response.data);
         // setNewTitle(response.data);
@@ -48,7 +48,7 @@ const UpdateForm = ({ department }) => {
 
   const editData = (id) => {
     axios
-      .put(`http://thawing-depths-18911.herokuapp.com/departments/${id}`, {
+      .put(`https://thawing-depths-18911.herokuapp.com/departments/${id}`, {
         dptName: newTitle.dptName,
         // lastName: newTitle.lastName,
         // email: newTitle.email,
