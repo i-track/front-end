@@ -20,13 +20,13 @@ const AddForm = ({handleChange, handleSubmit, newDepartment}) => {
           /> */}
           <input
             type="text"
-            name="firstName"
-            placeholder="First Name"
+            name="dptName"
+            placeholder="Department Name"
             className="add-input"
-            value={newDepartment.firstName}
+            value={newDepartment.dptName}
             onChange={handleChange}
           />
-          <input
+          {/* <input
             type="lastName"
             name="lastName"
             placeholder="Last Name"
@@ -40,8 +40,8 @@ const AddForm = ({handleChange, handleSubmit, newDepartment}) => {
             placeholder="Email"
             className="add-input"
             // value={newDepartment.member.email}
-            onChange={handleChange}
-          />
+            onChange={handleChange} */}
+          {/* /> */}
           <button className="add-btn" type="submit">
             Add
           </button>
