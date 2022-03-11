@@ -4,9 +4,9 @@ import axios from "axios";
 
 const UpdateForm = ({ department }) => {
   const [newTitle, setNewTitle] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
+    dptName: "",
+    // lastName: "",
+    // email: "",
   });
 
   const [redirect, setRedirect] = useState(false);
@@ -33,7 +33,7 @@ const UpdateForm = ({ department }) => {
     //   email: newDepartment.email,
     // };
     axios
-      .get("http://localhost:4000/departments")
+      .get("http://thawing-depths-18911.herokuapp.com/departments")
       .then((response) => {
         console.log(response.data);
         // setNewTitle(response.data);
@@ -48,10 +48,10 @@ const UpdateForm = ({ department }) => {
 
   const editData = (id) => {
     axios
-      .put(`http://localhost:4000/departments/${id}`, {
-        firstName: newTitle.firstName,
-        lastName: newTitle.lastName,
-        email: newTitle.email,
+      .put(`http://thawing-depths-18911.herokuapp.com/departments/${id}`, {
+        dptName: newTitle.dptName,
+        // lastName: newTitle.lastName,
+        // email: newTitle.email,
       })
       .then((res) => setNewTitle(res))
       .then((res) => alert("Updated! Refresh to view changes"));
@@ -65,14 +65,14 @@ const UpdateForm = ({ department }) => {
     <div className="update-form-container">
       <form className="update-form-container" onSubmit={handleFormSubmit}>
         <input
-          type="firstName"
-          name="firstName"
-          placeholder="First Name"
+          type="dptName"
+          name="dptName"
+          placeholder="Department Name"
           className="add-input"
-          value={newTitle.firstName}
+          value={newTitle.dptName}
           onChange={handleFormChange}
         />
-        <input
+        {/* <input
           type="lastName"
           name="lastName"
           placeholder="Last Name"
@@ -87,7 +87,7 @@ const UpdateForm = ({ department }) => {
           className="add-input"
           value={newTitle.email}
           onChange={handleFormChange}
-        />
+        /> */}
         <button
           className="editData-btn"
           onClick={() => editData(department._id)}

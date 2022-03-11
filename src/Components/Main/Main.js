@@ -15,7 +15,7 @@ const Main = ({
   return (
     <div>
       <section className="department-search-model">
-        <h2>View Members</h2>
+        <h2>View Departments</h2>
         <button className="get-btn" onClick={handleGet}>
           <GrIcons.GrOverview className="get-icon" />
         </button>

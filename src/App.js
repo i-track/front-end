@@ -14,9 +14,9 @@ function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [departments, setDepartments] = useState([]);
   const [newDepartment, setNewDepartment] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
+    dptName: "",
+    // lastName: "",
+    // email: "",
   });
 
   // N A V  F U N C T I O N S
@@ -46,12 +46,12 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const departmentData = {
-      firstName: newDepartment.firstName,
-      lastName: newDepartment.lastName,
-      email: newDepartment.email,
+      dptName: newDepartment.dptName,
+      // lastName: newDepartment.lastName,
+      // email: newDepartment.email,
     };
     axios
-      .post("http://localhost:4000/departments", departmentData)
+      .post("http://thawing-depths-18911.herokuapp.com/departments", departmentData)
       .then((response) => {
         console.log(response.data);
         setNewDepartment(response.data);
@@ -66,7 +66,7 @@ function App() {
 
   const handleGet = () => {
     axios
-      .get("http://localhost:4000/departments")
+      .get("http://thawing-depths-18911.herokuapp.com/departments")
       .then((res) => {
         setDepartments(res.data.departments);
         console.log(res.data.departments);
@@ -78,11 +78,11 @@ function App() {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:4000/departments/${id}`)
+      .delete(`http://thawing-depths-18911.herokuapp.com/departments/${id}`)
       .then((res) =>
         console.log("Deleted", res).catch((err) => console.log(err))
       );
-    return axios.get("http://localhost:4000/departments").then((res) => {
+    return axios.get("http://thawing-depths-18911.herokuapp.com/departments").then((res) => {
       setDepartments(res.data.departments);
     });
   };
@@ -94,10 +94,10 @@ function App() {
   const departmentList = departments.map((department) => (
     <div className="departments-container">
       <ul key={department._id} className="departments-content">
-        <li className="members-content">
+        {/* <li className="members-content">
           {department.firstName} {department.lastName}
-        </li>
-        <li className="members-content">{department.email}</li>
+        </li> */}
+        <li className="members-content">{department.dptName}</li>
         {/* <li className="members-content">{department.member[0].email}</li> */}
       </ul>
       <div className="department-buttons-inputs">
