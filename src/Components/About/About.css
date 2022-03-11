@@ -1,0 +1,56 @@
+body {
+    margin-bottom: 30%;
+}
+.about-me-container {
+    margin-top: 90px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.goal-container {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 10px 0 10px;
+    text-align: center; 
+}
+
+.developers-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 5px;
+    flex-direction: column;
+
+}
+
+.developer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    /* padding: 25px; */
+}
+
+.developer-container h2 {
+    text-align: center;
+    font-size: 20px;
+}
+
+.icon {
+    font-size: 35px;
+    color: black;
+}
+
+.contributor-title {
+    font-family: 'Lora', serif;
+}
+
+#about .department-search-model {
+    display: none; 
+}
+
+
